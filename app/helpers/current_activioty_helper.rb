@@ -1,0 +1,2 @@
+module CurrentActiviotyHelper
+end

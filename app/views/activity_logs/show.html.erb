@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Activity:</strong>
+  <%= @activity_log.activity %>
+</p>
+
+<p>
+  <strong>Started at:</strong>
+  <%= @activity_log.started_at %>
+</p>
+
+<p>
+  <strong>Ended at:</strong>
+  <%= @activity_log.ended_at %>
+</p>
+
+<%= link_to 'Edit', edit_activity_log_path(@activity_log) %> |
+<%= link_to 'Back', activity_logs_path %>

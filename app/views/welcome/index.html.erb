@@ -1,0 +1,11 @@
+<h1>Welcome to Timemng</h1>
+
+
+
+<% if @current_activity.present? %>
+    <p>記録中</p>
+    <%= @current_activity.activity.label %>
+    <%= @current_activity.started_at %>
+<% end %>
+
+<%= render partial: "controller" %>
