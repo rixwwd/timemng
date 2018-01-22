@@ -1,5 +1,8 @@
 {
   "name": "timemng",
   "private": true,
-  "dependencies": {}
+  "dependencies": {
+    "siimple": "3.0.0",
+    "jquery": "3.3.1"
+  }
 }

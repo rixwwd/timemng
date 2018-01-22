@@ -1,11 +1,7 @@
-<h1>Welcome to Timemng</h1>
+<div class="siimple-jumbotron" align="center">
+  <div class="siimple-jumbotron-title">Welcome to Timemng</div>
+  <div class="siimple-jumbotron-subtitle">Timemngは時間を記録するサービスです。</div>
+  <div class="siimple-jumbotron-detail">今日一日、何をしたのか記録しましょう。</div>
 
-
-
-<% if @current_activity.present? %>
-    <p>記録中</p>
-    <%= @current_activity.activity.label %>
-    <%= @current_activity.started_at %>
-<% end %>
-
-<%= render partial: "controller" %>
+  <a class="siimple-btn siimple-btn--pink" href="<%= current_activity_path %>">はじめる</a>
+</div>

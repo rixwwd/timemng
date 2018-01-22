@@ -1,0 +1,11 @@
+
+<% if @current_activity.present? %>
+    <div class="siimple-alert siimple-alert--grey" align="center">
+        記録中...
+        <%= @current_activity.activity.label %>
+        <%= @current_activity.started_at %>
+    </div>
+<% end %>
+
+<%= render partial: "controller" %>
+

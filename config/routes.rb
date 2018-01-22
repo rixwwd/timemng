@@ -2,8 +2,9 @@ Rails.application.routes.draw do
 
   root "welcome#index"
 
-  post 'current_activioty/start'
-  post 'current_activioty/stop'
+  get  'current_activity', to: "current_activity#index"
+  post 'current_activity/start'
+  post 'current_activity/stop'
 
   resources :activity_logs
   resources :activities

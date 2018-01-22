@@ -1,0 +1,13 @@
+<%= form_with(method: :post, url:current_activity_start_path, id:"start-form", class:"siimple-form") do |form| %>
+        <div class="siimple-form-field" align="center">
+            <%= form.collection_select(:activity_id, Activity.all, :id, :label, {prompt: "Select Activity"}, {class:"siimple-select"}) %>
+        </div>
+        <div class="siimple-form-field" align="center">
+            <div id="start-activity" class="control-button siimple-btn siimple-btn--pink">START</div>
+        </div>
+<% end %>
+<%= form_with(method: :post, url:current_activity_stop_path, id:"stop-form", class:"siimple-form") do |form| %>
+        <div class="siimple-form-field" align="center">
+            <div id="stop-activity" class="control-button siimple-btn siimple-btn--grey">STOP</div>
+        </div>
+<% end %>

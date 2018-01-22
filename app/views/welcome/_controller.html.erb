@@ -1,8 +1,0 @@
-<%= form_with(method: :post, url:current_activioty_start_path) do |form| %>
-    <%= form.collection_select(:activity_id, Activity.all, :id, :label) %>
-    <%= form.submit "START" %>
-<% end %>
-
-<%= form_with(method: :post, url:current_activioty_stop_path) do |form| %>
-    <%= form.submit "STOP" %>
-<% end %>
