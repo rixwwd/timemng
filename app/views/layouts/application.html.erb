@@ -22,9 +22,20 @@
     </div>
 
     <div class="contents">
+    <div class="siimple-tabs">
+      <% tab_class = ["siimple-tabs-tab"] %>
+      <%= content_tag(:div, class:["siimple-tabs-tab", request.path_info.start_with?(current_activity_path) ? "siimple-tabs-tab--selected" : nil]) do %>
+        <%= link_to("Controller", current_activity_path, class:"siimple-link") %>
+      <% end %>
+      <%= content_tag(:div, class:["siimple-tabs-tab", request.path_info.start_with?(activity_logs_path) ? "siimple-tabs-tab--selected" : nil]) do %>
+        <%= link_to("History", activity_logs_path, class:"siimple-link") %>
+      <% end %>
+      <%= content_tag(:div, class:["siimple-tabs-tab", request.path_info.start_with?(activities_path) ? "siimple-tabs-tab--selected" : nil]) do %>
+        <%= link_to("Activity", activities_path, class:"siimple-link") %>
+      <% end %>
+    </div>
     <%= yield %>
     </div>
     <div class="siimple-footer" align="center">Timemng by rixwwd</div>
-
   </body>
 </html>

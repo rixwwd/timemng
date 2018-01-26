@@ -1,4 +1,6 @@
 
+<div class="siimple-content">
+
 <% if @current_activity.present? %>
     <div class="siimple-alert siimple-alert--grey" align="center">
         記録中...
@@ -7,5 +9,10 @@
     </div>
 <% end %>
 
+<% if flash.now[:error].present? %>
+<div class="siimple-alert siimple-alert--yellow"><%= flash.now[:error] %></div>
+<% end %>
+
 <%= render partial: "controller" %>
 
+</div>

@@ -15,7 +15,7 @@
   <tbody>
     <% @activity_logs.each do |activity_log| %>
       <tr>
-        <td><%= activity_log.activity %></td>
+        <td><%= activity_log.activity.label %></td>
         <td><%= activity_log.started_at %></td>
         <td><%= activity_log.ended_at %></td>
         <td><%= link_to 'Show', activity_log %></td>
