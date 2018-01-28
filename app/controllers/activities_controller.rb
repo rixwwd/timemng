@@ -1,10 +1,11 @@
 class ActivitiesController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_activity, only: [:show, :edit, :update, :destroy]
 
   # GET /activities
   # GET /activities.json
   def index
-    @activities = Activity.all
+    @activities = current_user.activities
   end
 
   # GET /activities/1
@@ -14,7 +15,7 @@ class ActivitiesController < ApplicationController
 
   # GET /activities/new
   def new
-    @activity = Activity.new
+    @activity = current_user.activities.new
   end
 
   # GET /activities/1/edit
@@ -24,7 +25,7 @@ class ActivitiesController < ApplicationController
   # POST /activities
   # POST /activities.json
   def create
-    @activity = Activity.new(activity_params)
+    @activity = current_user.activities.new(activity_params)
 
     respond_to do |format|
       if @activity.save
@@ -64,7 +65,7 @@ class ActivitiesController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_activity
-      @activity = Activity.find(params[:id])
+      @activity = current_user.activities.find(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

@@ -5,6 +5,3 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-
-Activity.create([{label:'睡眠'}, {label: '仕事'}, {label: 'ランチ'}])
-CurrentActivity.create([{activity: nil, started_at: DateTime.now}])

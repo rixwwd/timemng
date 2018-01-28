@@ -1,18 +1,19 @@
 class CurrentActivity < ApplicationRecord
 
   belongs_to :activity
+  belongs_to :user
 
   validates :activity, presence: false
   validates :started_at, presence: true
   
-  def self.start(activity)
-    ca = CurrentActivity.new(activity_id: activity, started_at: DateTime.now)
-    ca.save
+  def start(activity)
+    self.activity_id = activity
+    self.started_at = DateTime.now
   end
 
-  def self.stop
+  def stop
     ca = CurrentActivity.lock.first
-    al = ActivityLog.new(activity: ca.activity, started_at: ca.started_at, ended_at: DateTime.now)
+    al = ActivityLog.new(user: self.user, activity: ca.activity, started_at: ca.started_at, ended_at: DateTime.now)
     al.save
     ca.destroy
   end

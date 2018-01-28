@@ -17,23 +17,35 @@
         <a class="siimple-navbar-title">Timemng</a>
       </div>
       <div class="siimple-layout--right">
-        <a class="siimple-navbar-link">Login</a>
+        <% if user_signed_in? %>
+          <%= link_to 'Logout', destroy_user_session_path, :method => :delete, class:'siimple-navbar-link'%>
+        <% else %>
+          <%= link_to 'Login', new_user_session_path, class:'siimple-navbar-link' %>
+        <% end %>
       </div>
     </div>
 
     <div class="contents">
-    <div class="siimple-tabs">
-      <% tab_class = ["siimple-tabs-tab"] %>
-      <%= content_tag(:div, class:["siimple-tabs-tab", request.path_info.start_with?(current_activity_path) ? "siimple-tabs-tab--selected" : nil]) do %>
-        <%= link_to("Controller", current_activity_path, class:"siimple-link") %>
-      <% end %>
-      <%= content_tag(:div, class:["siimple-tabs-tab", request.path_info.start_with?(activity_logs_path) ? "siimple-tabs-tab--selected" : nil]) do %>
-        <%= link_to("History", activity_logs_path, class:"siimple-link") %>
-      <% end %>
-      <%= content_tag(:div, class:["siimple-tabs-tab", request.path_info.start_with?(activities_path) ? "siimple-tabs-tab--selected" : nil]) do %>
-        <%= link_to("Activity", activities_path, class:"siimple-link") %>
-      <% end %>
-    </div>
+    <% if user_signed_in? %>
+      <div class="siimple-tabs">
+        <% tab_class = ["siimple-tabs-tab"] %>
+        <%= content_tag(:div, class:["siimple-tabs-tab", request.path_info.start_with?(current_activity_path) ? "siimple-tabs-tab--selected" : nil]) do %>
+          <%= link_to("Controller", current_activity_path, class:"siimple-link") %>
+        <% end %>
+        <%= content_tag(:div, class:["siimple-tabs-tab", request.path_info.start_with?(activity_logs_path) ? "siimple-tabs-tab--selected" : nil]) do %>
+          <%= link_to("History", activity_logs_path, class:"siimple-link") %>
+        <% end %>
+        <%= content_tag(:div, class:["siimple-tabs-tab", request.path_info.start_with?(activities_path) ? "siimple-tabs-tab--selected" : nil]) do %>
+          <%= link_to("Activity", activities_path, class:"siimple-link") %>
+        <% end %>
+      </div>
+    <% end %>
+    <% if notice.present? %>
+    <div class="siimple-alert siimple-alert--grey"><%= notice %></div>
+    <% end %>
+    <% if alert.present? %>
+    <div class="siimple-alert siimple-alert--pink"><%= alert %></div>
+    <% end %>
     <%= yield %>
     </div>
     <div class="siimple-footer" align="center">Timemng by rixwwd</div>

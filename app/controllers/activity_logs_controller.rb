@@ -1,10 +1,11 @@
 class ActivityLogsController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_activity_log, only: [:show, :edit, :update, :destroy]
 
   # GET /activity_logs
   # GET /activity_logs.json
   def index
-    @activity_logs = ActivityLog.all
+    @activity_logs = current_user.activity_logs
   end
 
   # GET /activity_logs/1
@@ -14,7 +15,7 @@ class ActivityLogsController < ApplicationController
 
   # GET /activity_logs/new
   def new
-    @activity_log = ActivityLog.new
+    @activity_log = current_user.activity_logs.new
   end
 
   # GET /activity_logs/1/edit
@@ -24,7 +25,7 @@ class ActivityLogsController < ApplicationController
   # POST /activity_logs
   # POST /activity_logs.json
   def create
-    @activity_log = ActivityLog.new(activity_log_params)
+    @activity_log = current_user.activity_logs.new(activity_log_params)
 
     respond_to do |format|
       if @activity_log.save
@@ -64,7 +65,7 @@ class ActivityLogsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_activity_log
-      @activity_log = ActivityLog.find(params[:id])
+      @activity_log = current_user.activity_logs.find(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
