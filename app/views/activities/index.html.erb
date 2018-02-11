@@ -1,27 +1,21 @@
-<p id="notice"><%= notice %></p>
-
-<h1>Activities</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>Label</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
+<div class="siimple-table">
+  <div class="siimple-table-header">
+    <div class="siimple-table-row">
+      <div class="siimple-table-cell">Label</div>
+      <div class="siimple-table-cell"></div>
+      <div class="siimple-table-cell"></div>
+    </div>
+  </div>
+  <div class="siimple-table-body">
     <% @activities.each do |activity| %>
-      <tr>
-        <td><%= activity.label %></td>
-        <td><%= link_to 'Show', activity %></td>
-        <td><%= link_to 'Edit', edit_activity_path(activity) %></td>
-        <td><%= link_to 'Destroy', activity, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
+      <div class="siimple-table-row">
+        <div class="siimple-table-cell"><%= activity.label %></div>
+        <div class="siimple-table-cell"><%= link_to 'Edit', edit_activity_path(activity) %></div>
+        <div class="siimple-table-cell"><%= link_to 'Destroy', activity, method: :delete, data: { confirm: 'Are you sure?' } %></div>
+      </div>
     <% end %>
-  </tbody>
-</table>
-
+  </div>
+</div>
 <br>
 
 <%= link_to 'New Activity', new_activity_path %>

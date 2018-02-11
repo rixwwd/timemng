@@ -5,7 +5,7 @@ class ActivityLogsController < ApplicationController
   # GET /activity_logs
   # GET /activity_logs.json
   def index
-    @activity_logs = current_user.activity_logs
+    @activity_logs = current_user.activity_logs.today_activity
   end
 
   # GET /activity_logs/1
@@ -29,7 +29,7 @@ class ActivityLogsController < ApplicationController
 
     respond_to do |format|
       if @activity_log.save
-        format.html { redirect_to @activity_log, notice: 'Activity log was successfully created.' }
+        format.html { redirect_to activity_logs_url, notice: 'Activity log was successfully created.' }
         format.json { render :show, status: :created, location: @activity_log }
       else
         format.html { render :new }
@@ -43,7 +43,7 @@ class ActivityLogsController < ApplicationController
   def update
     respond_to do |format|
       if @activity_log.update(activity_log_params)
-        format.html { redirect_to @activity_log, notice: 'Activity log was successfully updated.' }
+        format.html { redirect_to activity_logs_url, notice: 'Activity log was successfully updated.' }
         format.json { render :show, status: :ok, location: @activity_log }
       else
         format.html { render :edit }
@@ -70,6 +70,6 @@ class ActivityLogsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def activity_log_params
-      params.require(:activity_log).permit(:activity, :started_at, :ended_at)
+      params.require(:activity_log).permit(:activity_id, :activity, :started_at, :ended_at)
     end
 end

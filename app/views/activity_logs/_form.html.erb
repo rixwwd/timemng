@@ -1,4 +1,4 @@
-<%= form_with(model: activity_log, local: true) do |form| %>
+<%= form_with(model: activity_log, local: true, id:"activity_log-form", class:"siimple-form") do |form| %>
   <% if activity_log.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(activity_log.errors.count, "error") %> prohibited this activity_log from being saved:</h2>
@@ -11,22 +11,22 @@
     </div>
   <% end %>
 
-  <div class="field">
+  <div class="siimple-form-field">
     <%= form.label :activity %>
-    <%= form.text_field :activity, id: :activity_log_activity %>
+    <%= form.collection_select(:activity_id, Activity.all, :id, :label, {}, {class:"siimple-select"}) %>
   </div>
 
-  <div class="field">
+  <div class="siimple-form-field">
     <%= form.label :started_at %>
-    <%= form.datetime_select :started_at, id: :activity_log_started_at %>
+    <%= form.datetime_select :started_at, {id: :activity_log_started_at}, {class:"siimple-select"} %>
   </div>
 
-  <div class="field">
+  <div class="siimple-form-field">
     <%= form.label :ended_at %>
-    <%= form.datetime_select :ended_at, id: :activity_log_ended_at %>
+    <%= form.datetime_select :ended_at, {id: :activity_log_ended_at}, {class:"siimple-select"} %>
   </div>
 
-  <div class="actions">
-    <%= form.submit %>
+  <div class="siimple-form-field">
+    <div id="submit-activity_log" class="siimple-btn siimple-btn--pink">Submit</div>
   </div>
 <% end %>
